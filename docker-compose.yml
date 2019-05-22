@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  mariadb:
+    image: 'bitnami/mariadb:10.1'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=jmauricio
+      - MARIADB_DATABASE=d_soccer
+      - MARIADB_PASSWORD=1q2w3e
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  myapp:
+    tty: true
+    image: bitnami/laravel:5-debian-9
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=jmauricio
+      - DB_DATABASE=d_soccer
+      - DB_PASSWORD=1q2w3e
+    depends_on:
+      - mariadb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
