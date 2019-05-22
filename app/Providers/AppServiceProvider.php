@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Soccer\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
