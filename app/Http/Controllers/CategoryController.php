@@ -8,6 +8,11 @@ use Soccer\Categories as Category;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
